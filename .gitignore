@@ -128,3 +128,9 @@ dist
 .yarn/build-state.yml
 .yarn/install-state.gz
 .pnp.*
+
+# whatsapp persist session
+.wwebjs_auth/
+
+app.js
+app2.js
