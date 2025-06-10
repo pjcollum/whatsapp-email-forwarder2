@@ -5,6 +5,7 @@ const Imap = require('imap');
 const { simpleParser } = require('mailparser');
 const { Client, LocalAuth } = require('whatsapp-web.js');
 const qrcode = require('qrcode-terminal');
+const cron = require('node-cron');
 
 // --- WhatsApp Setup ---
 const client = new Client({
@@ -16,27 +17,18 @@ client.on('qr', qr => {
   qrcode.generate(qr, { small: true });
 });
 
-// client.on('ready', () => {
-//   console.log('✅ WhatsApp client is ready!');
-//   checkEmails();
-// });
-
-// --- Cron Job --- 
-const cron = require('node-cron');
-
 client.on('ready', () => {
   console.log('✅ WhatsApp client is ready!');
 
-  // Run checkEmails once immediately (optional)
+  // Run checkEmails once immediately
   checkEmails();
 
-  // Schedule to run daily at 9:00 AM
-  cron.schedule('0 9 * * *', () => {
+  // Schedule to run daily at 12 midday
+  cron.schedule('0 13 * * *', () => {
     console.log('⏰ Running scheduled email check...');
     checkEmails();
   });
 });
-
 
 client.on('auth_failure', () => {
   console.error('❌ WhatsApp authentication failed.');
