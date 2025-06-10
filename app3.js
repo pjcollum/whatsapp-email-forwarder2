@@ -24,7 +24,7 @@ client.on('ready', () => {
   checkEmails();
 
   // Schedule to run daily at 12 midday
-  cron.schedule('0 15 * * *', () => {
+  cron.schedule('0 16 * * *', () => {
     console.log('⏰ Running scheduled email check...');
     checkEmails();
   });
