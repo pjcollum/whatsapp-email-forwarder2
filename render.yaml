@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: whatsapp-email-forwarder
+    env: node
+    buildCommand: npm install && npm install puppeteer
+    startCommand: npm start
+    envVars:
+      - key: EMAIL_USER
+        sync: false
+      - key: EMAIL_PASS
+        sync: false
+      - key: SENDER_TO_WATCH
+        sync: false
+      - key: WHATSAPP_RECIPIENT
+        sync: false
+    healthCheckPath: /
+    autoDeploy: true 
