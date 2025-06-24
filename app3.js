@@ -1,5 +1,11 @@
 // latest working version 10/6/25
 
+const http = require('http');
+http.createServer((req, res) => {
+  res.writeHead(200, {'Content-Type': 'text/plain'});
+  res.end('OK');
+}).listen(process.env.PORT || 3000);
+
 require('dotenv').config();
 const Imap = require('imap');
 const { simpleParser } = require('mailparser');
