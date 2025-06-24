@@ -4,7 +4,7 @@
   "description": "A Node.js application that forwards specific emails to WhatsApp",
   "main": "app3.js",
   "scripts": {
-    "start": "node --no-sandbox app3.js",
+    "start": "node app3.js",
     "build": "npm install"
   },
   "engines": {
